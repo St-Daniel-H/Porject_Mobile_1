@@ -7,19 +7,34 @@ class ImageContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    int itemCount = L1.length;
+    int crossAxisCount = itemCount == 16 ? 8 : 4;
+    double containerWidth = 0;
+    if(L1.length == 16){
+      crossAxisCount = 3;
+      containerWidth= 400.0;
+    }else if(L1.length == 4){
+      crossAxisCount = 2;
+      containerWidth= 800.0;
+    }
     return Container(
-      height: 100.0, // Set the desired height
-      width: double.infinity, // Set the width to match the parent width
+      height: 1000.0,
+      width: containerWidth,
       child: GridView.builder(
         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 4, // Number of items per row
-          crossAxisSpacing: 10.0, // Spacing between columns
-          mainAxisSpacing: 10.0, // Spacing between rows
+          crossAxisCount: crossAxisCount,
+          crossAxisSpacing: 0.0,
+          mainAxisSpacing: 0.0,
+          childAspectRatio: 2,
         ),
-        padding: const EdgeInsets.all(10),
-        itemCount: L1.length,
+        padding: const EdgeInsets.all(5),
+        itemCount: itemCount,
         itemBuilder: (context, index) {
-          return L1[index];
+          return SizedBox(
+            height:10,
+            // width:200,
+            child: L1[index],
+          );
         },
       ),
     );

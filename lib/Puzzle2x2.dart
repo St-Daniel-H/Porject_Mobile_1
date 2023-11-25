@@ -49,11 +49,44 @@ class _Puzzle2x2State extends State<Puzzle2x2> {
       ImageOptionRadio(description: "",valueOfRadio: "3",image: "/2x2Puzzle_1/4.jpg",optionGroup: "1",getSelectedOption: selectedValue,updateSelectedOption: updateSelectedValue),
 
     ];
+    void validateInput(){
+      String text;
+      if (imageBoxOne ==  "/2x2Puzzle_1/4.jpg" &&
+          imageBoxTwo ==  "/2x2Puzzle_1/3.jpg" &&
+          imageBoxThree ==  "/2x2Puzzle_1/2.jpg" &&
+          imageBoxFour ==  "/2x2Puzzle_1/1.jpg" ) {
+        text = "Winner, congrats!";
+      }else{
+        text="Loser, try again";
+      }
+      final snackBar = SnackBar(
+        content: Text(text), // Your message here
+        duration: Duration(seconds: 2), // Optional: Set the duration for how long the SnackBar should be displayed
+      );
+
+      // Find the nearest Scaffold and show the SnackBar
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+    }
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text("helloo"),
+        title: const Text("Puzzle Game"),
         centerTitle: true,actions: [
+        Tooltip(
+            message: 'Solve puzzle',
+            child: IconButton(
+              onPressed: () {
+                setState(() {
+                  imageBoxOne =  "/2x2Puzzle_1/4.jpg";
+                  imageBoxTwo =  "/2x2Puzzle_1/3.jpg" ;
+                  imageBoxThree =  "/2x2Puzzle_1/2.jpg" ;
+                  imageBoxFour =  "/2x2Puzzle_1/1.jpg" ;
+
+                });},
+              icon: const Icon(
+                Icons.check_circle,
+              ),
+            )),
         // displays reset icon in AppBar
         Tooltip(
             message: 'Reset selection',
@@ -72,28 +105,52 @@ class _Puzzle2x2State extends State<Puzzle2x2> {
             )),
       ],
       ),
-        body: Column(
+        body: Row(
+
           children: [
             Container(
-              height:200, // Set a height for the container
+              height:500, // Set a height for the container
               width:400,
               child: ImageContainer(L1: items),
             ),
-            Row(
+            Container(
+              padding: EdgeInsets.only(left: 170.0),
+              child: Column(
+
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                PlaceImage(placeImage: updateImageOne,image: imageBoxOne),
-                PlaceImage(placeImage: updateImageTwo,image: imageBoxTwo),
+                Row(
+
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    PlaceImage(placeImage: updateImageOne,image: imageBoxOne),
+                    PlaceImage(placeImage: updateImageTwo,image: imageBoxTwo),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    PlaceImage(placeImage: updateImageThree,image: imageBoxThree),
+                    PlaceImage(placeImage: updateImageFour,image: imageBoxFour),
+                  ],
+                ),
               ],
+            ),),
+
+            Container(
+              padding: EdgeInsets.only(left: 50.0),
+              child:  Image.asset("/2x2Puzzle_1/${int.parse(selectedValue)+1}.jpg",width:100,height:100),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                PlaceImage(placeImage: updateImageThree,image: imageBoxThree),
-                PlaceImage(placeImage: updateImageFour,image: imageBoxFour),
-              ],
-            ),
-            Image.asset("/2x2Puzzle_1/${int.parse(selectedValue)+1}.jpg",width:50,height:50)
+            Align(
+                alignment: Alignment.bottomRight,
+                child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        validateInput();
+                      },
+                      child: Text('Submit'),
+                    ))),
           ],
 
         )

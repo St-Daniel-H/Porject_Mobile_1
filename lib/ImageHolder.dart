@@ -15,16 +15,22 @@ class ImageOptionRadio extends StatefulWidget {
 class _ImageOptionRadioState extends State<ImageOptionRadio> {
   @override
   Widget build(BuildContext context) {
-    return RadioListTile(
-      title: Text(widget.description),
-      value: widget.valueOfRadio,
-      groupValue:widget.getSelectedOption,
-      onChanged: (value) {
-        setState(() {
-          widget.updateSelectedOption(value.toString());
-        });
-      },
-      secondary: Image.asset(widget.image), // Replace with your image asset path
+    return
+      Container(
+        height: 100,
+        child:RadioListTile(
+        title: Text(widget.description),
+        value: widget.valueOfRadio,
+        groupValue:widget.getSelectedOption,
+        onChanged: (value) {
+          setState(() {
+            widget.updateSelectedOption(value.toString());
+          });
+        },
+        secondary: Container(
+          child: Image.asset(widget.image,height:50,width:50),
+        ), // Replace with your image asset path
+      ),
     );
   }
 }
