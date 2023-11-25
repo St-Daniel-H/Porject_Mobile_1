@@ -10,7 +10,7 @@ class Puzzle2x2 extends StatefulWidget {
 }
 
 class _Puzzle2x2State extends State<Puzzle2x2> {
-  String selectedValue = "1";
+  String selectedValue = "0";
    void updateSelectedValue(value){
      setState(() {
        selectedValue = value;
@@ -20,6 +20,24 @@ class _Puzzle2x2State extends State<Puzzle2x2> {
   void updateImageOne(){
     setState((){
       imageBoxOne="/2x2Puzzle_1/${int.parse(selectedValue)+1}.jpg";
+    });
+  }
+  String imageBoxTwo = "";
+  void updateImageTwo (){
+    setState((){
+      imageBoxTwo="/2x2Puzzle_1/${int.parse(selectedValue)+1}.jpg";
+    });
+  }
+  String imageBoxThree = "";
+  void updateImageThree(){
+    setState((){
+      imageBoxThree="/2x2Puzzle_1/${int.parse(selectedValue)+1}.jpg";
+    });
+  }
+  String imageBoxFour = "";
+  void updateImageFour(){
+    setState((){
+      imageBoxFour="/2x2Puzzle_1/${int.parse(selectedValue)+1}.jpg";
     });
   }
   @override
@@ -40,16 +58,25 @@ class _Puzzle2x2State extends State<Puzzle2x2> {
         body: Column(
           children: [
             Container(
-              height:300, // Set a height for the container
+              height:200, // Set a height for the container
               width:400,
               child: ImageContainer(L1: items),
             ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 PlaceImage(placeImage: updateImageOne,image: imageBoxOne),
+                PlaceImage(placeImage: updateImageTwo,image: imageBoxTwo),
               ],
             ),
-            Image.asset("/2x2Puzzle_1/${int.parse(selectedValue)+1}.jpg",width:100,height:100)
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                PlaceImage(placeImage: updateImageThree,image: imageBoxThree),
+                PlaceImage(placeImage: updateImageFour,image: imageBoxFour),
+              ],
+            ),
+            Image.asset("/2x2Puzzle_1/${int.parse(selectedValue)+1}.jpg",width:50,height:50)
           ],
 
         )

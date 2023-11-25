@@ -32,7 +32,7 @@ class _PlaceImageState extends State<PlaceImage> {
           });
 
         },
-        child: Text(widget.image.toString()),
+        child: const Text("Select Image"),
       ),
     ) :  Container(
       padding: EdgeInsets.all(10.0),
