@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'ImageHolder.dart';
 import 'package:puzzle_game/ImageContainer.dart';
+import 'PlaceImageButton.dart';
 class Puzzle2x2 extends StatefulWidget {
   const Puzzle2x2({Key? key}) : super(key: key);
 
@@ -15,7 +16,12 @@ class _Puzzle2x2State extends State<Puzzle2x2> {
        selectedValue = value;
      });
   }
-
+  String imageBoxOne = "";
+  void updateImageOne(){
+    setState((){
+      imageBoxOne="/2x2Puzzle_1/${int.parse(selectedValue)+1}.jpg";
+    });
+  }
   @override
   Widget build(BuildContext context) {
     List<Widget> items = [
@@ -25,6 +31,7 @@ class _Puzzle2x2State extends State<Puzzle2x2> {
       ImageOptionRadio(description: "",valueOfRadio: "3",image: "/2x2Puzzle_1/4.jpg",optionGroup: "1",getSelectedOption: selectedValue,updateSelectedOption: updateSelectedValue),
 
     ];
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("helloo"),
@@ -39,7 +46,7 @@ class _Puzzle2x2State extends State<Puzzle2x2> {
             ),
             Row(
               children: [
-
+                PlaceImage(placeImage: updateImageOne,image: imageBoxOne),
               ],
             ),
             Image.asset("/2x2Puzzle_1/${int.parse(selectedValue)+1}.jpg",width:100,height:100)
