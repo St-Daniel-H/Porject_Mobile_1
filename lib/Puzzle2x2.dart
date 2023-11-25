@@ -53,7 +53,24 @@ class _Puzzle2x2State extends State<Puzzle2x2> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("helloo"),
-        centerTitle: true,
+        centerTitle: true,actions: [
+        // displays reset icon in AppBar
+        Tooltip(
+            message: 'Reset selection',
+            child: IconButton(
+              onPressed: () {
+                setState(() {
+                  selectedValue = "0";
+                  imageBoxOne = "";
+                  imageBoxTwo = "";
+                  imageBoxThree = "";
+                  imageBoxFour = "";
+              });},
+              icon: const Icon(
+                Icons.restore,
+              ),
+            )),
+      ],
       ),
         body: Column(
           children: [
