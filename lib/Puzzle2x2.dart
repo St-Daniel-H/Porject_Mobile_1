@@ -40,6 +40,7 @@ class _Puzzle2x2State extends State<Puzzle2x2> {
       imageBoxFour="/2x2Puzzle_1/${int.parse(selectedValue)+1}.jpg";
     });
   }
+  
   @override
   Widget build(BuildContext context) {
     List<Widget> items = [
@@ -49,6 +50,8 @@ class _Puzzle2x2State extends State<Puzzle2x2> {
       ImageOptionRadio(description: "",valueOfRadio: "3",image: "/2x2Puzzle_1/4.jpg",optionGroup: "1",getSelectedOption: selectedValue,updateSelectedOption: updateSelectedValue),
 
     ];
+
+
     void validateInput(){
       String text;
       if (imageBoxOne ==  "/2x2Puzzle_1/4.jpg" &&

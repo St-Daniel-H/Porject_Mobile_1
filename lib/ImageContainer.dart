@@ -16,6 +16,9 @@ class ImageContainer extends StatelessWidget {
     }else if(L1.length == 4){
       crossAxisCount = 2;
       containerWidth= 800.0;
+    }else if(L1.length == 9){
+      crossAxisCount = 3;
+      containerWidth= 400.0;
     }
     return Container(
       height: 1000.0,

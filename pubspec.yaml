@@ -83,8 +83,15 @@ flutter:
     - assets/4x4Puzzle_1/14.jpg
     - assets/4x4Puzzle_1/15.jpg
     - assets/4x4Puzzle_1/16.jpg
-    -
-    -
+    - assets/3x3Puzzle_1/1.jpg
+    - assets/3x3Puzzle_1/2.jpg
+    - assets/3x3Puzzle_1/3.jpg
+    - assets/3x3Puzzle_1/4.jpg
+    - assets/3x3Puzzle_1/5.jpg
+    - assets/3x3Puzzle_1/6.jpg
+    - assets/3x3Puzzle_1/7.jpg
+    - assets/3x3Puzzle_1/8.jpg
+    - assets/3x3Puzzle_1/9.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
