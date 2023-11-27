@@ -70,7 +70,7 @@ class _Puzzle2x2State extends State<Puzzle2x2> {
       // Find the nearest Scaffold and show the SnackBar
       ScaffoldMessenger.of(context).showSnackBar(snackBar);
     }
-
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       appBar: AppBar(
         title: const Text("Puzzle Game"),
@@ -108,40 +108,96 @@ class _Puzzle2x2State extends State<Puzzle2x2> {
             )),
       ],
       ),
-        body: Row(
+        body: screenWidth>800 ? Column(
+
+        children:[
+          Row(
+            children: [
+              // First Container with ImageContainer
+              Container(
+                height: 250,
+                width: 300,
+                child: ImageContainer(L1: items),
+              ),
+              // Second Container with Column
+              Container(
+                padding: EdgeInsets.only(left: screenWidth / 7),
+                child: Container(
+                  padding: EdgeInsets.only(top:50),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          PlaceImage(placeImage: updateImageOne, image: imageBoxOne),
+                          PlaceImage(placeImage: updateImageTwo, image: imageBoxTwo),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                             PlaceImage(placeImage: updateImageThree, image: imageBoxThree),
+                             PlaceImage(placeImage: updateImageFour, image: imageBoxFour),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Container(
+            //padding: EdgeInsets.only(left: 50.0),
+            child:  Image.asset("/2x2Puzzle_1/${int.parse(selectedValue)+1}.jpg",width:100,height:100),
+          ),
+        Align(
+        alignment: Alignment.bottomRight,
+        child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+        child: ElevatedButton(
+        onPressed: () {
+        validateInput();
+        },
+        child: Text('Submit'),
+        ),
+        ),
+         ),])
+        : Column(
 
           children: [
             Container(
-              height:500, // Set a height for the container
-              width:400,
+              height:180, // Set a height for the container
+              //width:400,
               child: ImageContainer(L1: items),
             ),
             Container(
-              padding: EdgeInsets.only(left: 170.0),
               child: Column(
 
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Row(
 
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    PlaceImage(placeImage: updateImageOne,image: imageBoxOne),
-                    PlaceImage(placeImage: updateImageTwo,image: imageBoxTwo),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    PlaceImage(placeImage: updateImageThree,image: imageBoxThree),
-                    PlaceImage(placeImage: updateImageFour,image: imageBoxFour),
-                  ],
-                ),
-              ],
-            ),),
+                children: [
+                  Container(
+                      child:Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+
+                        children: [
+                      PlaceImage(placeImage: updateImageOne,image: imageBoxOne),
+                      PlaceImage(placeImage: updateImageTwo,image: imageBoxTwo),
+                    ],
+                  )),
+                  Container(
+                      child:Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+
+                        children: [
+                      PlaceImage(placeImage: updateImageThree,image: imageBoxThree),
+                      PlaceImage(placeImage: updateImageFour,image: imageBoxFour),
+                    ],
+                  )),
+                ],
+              ),),
 
             Container(
-              padding: EdgeInsets.only(left: 50.0),
               child:  Image.asset("/2x2Puzzle_1/${int.parse(selectedValue)+1}.jpg",width:100,height:100),
             ),
             Align(
@@ -152,10 +208,9 @@ class _Puzzle2x2State extends State<Puzzle2x2> {
                       onPressed: () {
                         validateInput();
                       },
-                      child: Text('Submit'),
+                      child: const Text('Submit'),
                     ))),
           ],
-
         )
 
 

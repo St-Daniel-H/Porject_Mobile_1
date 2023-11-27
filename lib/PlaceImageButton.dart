@@ -15,8 +15,8 @@ class _PlaceImageState extends State<PlaceImage> {
 
     return !(widget.image != "") ? Container(
       padding: EdgeInsets.all(10.0),
-      height:200,
-      width:200,// Adjust padding as needed
+      height:150,
+      width:150,// Adjust padding as needed
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.blue, // Border color
@@ -35,9 +35,9 @@ class _PlaceImageState extends State<PlaceImage> {
         child: const Text("Select Image"),
       ),
     ) :  Container(
-      padding: EdgeInsets.all(10.0),
-      height:200,
-      width:200,// Adjust padding as needed
+    //  padding: EdgeInsets.all(10.0),
+      height:150,
+      width:150,// Adjust padding as needed
       decoration: BoxDecoration(
         border: Border.all(
           color: Colors.blue, // Border color
@@ -52,7 +52,7 @@ class _PlaceImageState extends State<PlaceImage> {
             widget.placeImage();
           });
         },
-        child:Image.asset(widget.image,height: 200,width:200),)
+        child:Image.asset(widget.image,fit: BoxFit.cover),)
       );
   }
 }

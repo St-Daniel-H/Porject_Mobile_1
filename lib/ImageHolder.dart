@@ -15,9 +15,11 @@ class ImageOptionRadio extends StatefulWidget {
 class _ImageOptionRadioState extends State<ImageOptionRadio> {
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double screenWidth = MediaQuery.of(context).size.width;
+
     return
       Container(
-        height: 100,
         child:RadioListTile(
         title: Text(widget.description),
         value: widget.valueOfRadio,

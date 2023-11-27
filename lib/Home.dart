@@ -20,10 +20,12 @@ class _HomeState extends State<Home> {
       body: Center(
           child:Column(
         children: [
+          const SizedBox(height: 100,),
           Container(
+            width:500,
             child: const Text("Welcome to my puzzle Game! Please choose the difficulty to proceed",
               style: TextStyle(
-                fontSize: 24.0,
+                fontSize: 30.0,
                 fontWeight: FontWeight.bold,
                 color: Colors.blue,
                 fontStyle: FontStyle.italic,
@@ -62,7 +64,8 @@ class _HomeState extends State<Home> {
                 elevation: 5, // Elevation (shadow)
                 fixedSize: Size(200, 50),
               )),
-
+          const SizedBox(height: 20,),
+          const Text("This project was done by Daniel AlHoujairy, id: 12133522")
         ],
       ))
     );
